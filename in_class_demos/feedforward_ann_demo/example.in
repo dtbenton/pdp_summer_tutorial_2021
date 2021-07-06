@@ -1,0 +1,39 @@
+addNet ExampleModel
+
+# input groups
+addGroup Input 3 INPUT
+
+# hidden group
+addGroup hidden 2
+
+# output group 
+addGroup Output 1 OUTPUT
+
+
+# connect groups (input => hidden => output)
+connectGroups Input hidden Output
+
+
+# training examples: 
+loadExamples train.ex
+loadExamples test.ex
+
+
+
+# set learning and display parameters
+setObj learningRate 0.08
+setObj momentum	    0.9
+setObj batchSize    0
+setObj numUpdates   10
+setObj reportInterval 1
+setObj unitCellSize 30
+
+
+
+# the commands below specify how the network will be displayed in Lens
+resetPlot 
+plotRow 2 b 2 n Output 1
+plotRow 2 b 1 n hidden 2
+plotRow 2 b 1 n Input 3 
+drawUnits
+viewUnits
